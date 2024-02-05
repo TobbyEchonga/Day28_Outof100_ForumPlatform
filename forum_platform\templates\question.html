@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ question.title }}</title>
+</head>
+
+<body>
+    <h1>{{ question.title }}</h1>
+    <p>{{ question.content }}</p>
+    <ul>
+        {% for answer in question.answers %}
+        <li>{{ answer.content }}</li>
+        {% endfor %}
+    </ul>
+    <form method="POST" action="{{ url_for('question', question_id=question.id) }}">
+        <label for="content">Your Answer:</label>
+        <textarea id="content" name="content" rows="4" required></textarea>
+        <br>
+        <button type="submit">Submit Answer</button>
+    </form>
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+
+</html>
